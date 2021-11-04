@@ -12,10 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43ccd50ce40b9ab408a3947d8d683f64, type: 3}
   m_Name: FireballSO
   m_EditorClassIdentifier: 
+  itemID: 72b65bb2-589a-472a-877e-d61e1cc9f8dc
+  displayName: 
+  description: 
+  icon: {fileID: 21300000, guid: aba0f700d91d4fc4fa8c724899ab04ab, type: 3}
+  pickup: {fileID: 1016138138077383102, guid: 252e38b12e5d6064faa67b795b63db9a, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: da03a0241491db7468000e5ddf8941d4, type: 2}
   equippedPrefab: {fileID: 6744188619605736457, guid: f721f4bab93604e4a8d74ea394a2f928,
     type: 3}
-  WeaponDamage: 5
+  WeaponDamage: 10
   percentageBonus: 12.25
   WeaponRange: 20
   isRightHanded: 0

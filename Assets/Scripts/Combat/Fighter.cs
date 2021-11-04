@@ -4,14 +4,13 @@ using RPG.Core;
 using RPG.Saving;
 using RPG.Attributes;
 using RPG.Stats;
-using System.Collections.Generic;
 using RPG.Utils;
-using System;
 using UnityEngine.Events;
+using RPG.Inventories;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] public float TimeBetweenAttacks = 1f;
         [SerializeField] Transform rightHandTransform = null;
@@ -19,6 +18,7 @@ namespace RPG.Combat
         [SerializeField] WeaponConfig defaultWeapon = null;
         [SerializeField] UnityEvent onProjectileLaunch = null;
         WeaponConfig currentWeaponConfig;
+        Equipment equipment;
         LazyValue<Weapon> currentWeapon;
         private float timeSinceLastAttack = Mathf.Infinity;
         private Health target;
@@ -28,6 +28,11 @@ namespace RPG.Combat
         {
             currentWeaponConfig = defaultWeapon;
             currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+            equipment = GetComponent<Equipment>();
+            if (equipment)
+            {
+                equipment.equipmentUpdated += UpdateWeapon;
+            }
         }
 
         private Weapon SetupDefaultWeapon()
@@ -79,9 +84,20 @@ namespace RPG.Combat
             currentWeapon.value = AttachWeapon(weapon);
         }
 
+        private void UpdateWeapon()
+        {
+            var weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as WeaponConfig;
+            if (!weapon)
+                EquipWeapon(defaultWeapon);
+            else
+                EquipWeapon(weapon);
+
+        }
+
         private Weapon AttachWeapon(WeaponConfig weapon)
         {
             Animator animator = GetComponent<Animator>();
+            Debug.Assert(rightHandTransform != null, $"{gameObject.name}: Right hand not set");
             return weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 
@@ -132,6 +148,8 @@ namespace RPG.Combat
             this.target = target.GetComponent<Health>();
         }
         private float GetDamageValue() => GetComponent<BaseStats>().GetStat(Stat.Damage);
+        public WeaponConfig GetWeapon() => currentWeaponConfig;
+
 
         #region Saving
         public object CaptureState()
@@ -144,53 +162,6 @@ namespace RPG.Combat
             WeaponConfig weapon = Resources.Load<WeaponConfig>(weaponName);
             EquipWeapon(weapon);
         }
-        public WeaponConfig GetWeapon() => currentWeaponConfig;
-
-
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            switch (stat)
-            {
-                case Stat.Health:
-                    yield return 0;
-                    break;
-                case Stat.ExperienceReward:
-                    yield return 0;
-                    break;
-                case Stat.ExperienceToLevelUp:
-                    yield return 0;
-                    break;
-                case Stat.Damage:
-                    yield return currentWeaponConfig.GetPercentageBonus();
-                    break;
-                default:
-                    yield return 0;
-                    break;
-            }
-        }
-
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            switch (stat)
-            {
-                case Stat.Health:
-                    yield return 0;
-                    break;
-                case Stat.ExperienceReward:
-                    yield return 0;
-                    break;
-                case Stat.ExperienceToLevelUp:
-                    yield return 0;
-                    break;
-                case Stat.Damage:
-                    yield return currentWeaponConfig.GetDamage();
-                    break;
-                default:
-                    yield return 0;
-                    break;
-            }
-        }
-
         #endregion
     }
 }

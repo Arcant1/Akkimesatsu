@@ -1,9 +1,14 @@
-﻿using RPG.Attributes;
+﻿using System.Collections.Generic;
+
+using RPG.Attributes;
+using RPG.Inventories;
+using RPG.Stats;
+
 using UnityEngine;
 namespace RPG.Combat
 {
     [CreateAssetMenu(fileName = "Weapon", menuName = "Akki Messatsu/Weapons/Make new Weapon", order = 0)]
-    public class WeaponConfig : ScriptableObject
+    public class WeaponConfig : EquipableItem, IModifierProvider
     {
         [SerializeField] public AnimatorOverrideController animatorOverride = null;
         [SerializeField] public Weapon equippedPrefab = null;
@@ -56,6 +61,18 @@ namespace RPG.Combat
         private Transform GetTransform(Transform rightHand, Transform leftHand)
         {
             return (isRightHanded) ? rightHand : leftHand;
+        }
+
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            if(stat == Stat.Damage)
+            yield return WeaponDamage;
+        }
+
+        public IEnumerable<float> GetPercentageModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+                yield return percentageBonus;
         }
     }
 }

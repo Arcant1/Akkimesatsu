@@ -4,6 +4,7 @@ using RPG.Movement;
 using RPG.Attributes;
 using UnityEngine.EventSystems;
 using System;
+using System.Collections.Generic;
 
 namespace RPG.Control
 {
@@ -11,6 +12,7 @@ namespace RPG.Control
     {
         private Mover mover;
         private Health health;
+        bool isDraggingUI = false;
         [System.Serializable]
         struct CursorMapping
         {
@@ -23,7 +25,7 @@ namespace RPG.Control
         [SerializeField] float navMeshProjectionDistance = 1f;
         [SerializeField] CursorMapping[] cursorMapping = { };
         [SerializeField] float raycastRadius=1f;
-
+        private CursorType currentCursor;
         private void Awake()
         {
             health = GetComponent<Health>();
@@ -64,11 +66,20 @@ namespace RPG.Control
 
         private bool InteractWithUI()
         {
+            if (Input.GetMouseButtonUp(0))
+            {
+                isDraggingUI = false;
+            }
             if (EventSystem.current.IsPointerOverGameObject())
             {
+                if(Input.GetMouseButtonDown(0))
+                {
+                    isDraggingUI = true;
+                }
                 SetCursor(CursorType.UI);
                 return true;
             }
+            if (isDraggingUI) return true;
             return false;
         }
 
@@ -117,6 +128,8 @@ namespace RPG.Control
 
         private void SetCursor(CursorType cursorType)
         {
+            if (currentCursor == cursorType) return;
+            currentCursor = cursorType;
             CursorMapping cursorMapping = GetCursorMapping(cursorType);
             Cursor.SetCursor(cursorMapping.texture, cursorMapping.hotspot, CursorMode.Auto);
         }
