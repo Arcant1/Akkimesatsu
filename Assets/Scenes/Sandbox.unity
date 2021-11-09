@@ -1456,7 +1456,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317231393}
-  m_LocalRotation: {x: -0.110495366, y: 0.8892443, z: -0.32507727, w: -0.30225855}
+  m_LocalRotation: {x: -0.11049537, y: 0.88924426, z: -0.3250773, w: -0.30225852}
   m_LocalPosition: {x: -13.8, y: 6.29, z: 39.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7310,7 +7310,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1690330530}
-  m_LocalRotation: {x: 0.10125711, y: 0.7993917, z: -0.14070936, w: 0.57525724}
+  m_LocalRotation: {x: 0.10125711, y: 0.7993917, z: -0.14070939, w: 0.57525724}
   m_LocalPosition: {x: -5.501359, y: 8.788614, z: 28.442673}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7500,8 +7500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scatterDistance: 1
-  dropLibrary: []
-  numberOfDrops: 2
+  dropLibrary: {fileID: 0}
 --- !u!1 &1817193510
 GameObject:
   m_ObjectHideFlags: 0
@@ -9206,7 +9205,7 @@ PrefabInstance:
     - target: {fileID: 1820979120755336175, guid: 0f208fd36ad787a42949fd8f89b7ccfd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -644.8002
+      value: -570.74994
       objectReference: {fileID: 0}
     - target: {fileID: 1820979120755336175, guid: 0f208fd36ad787a42949fd8f89b7ccfd,
         type: 3}

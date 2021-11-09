@@ -59,9 +59,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58a475dafff080419f095da28aded30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scatterDistance: 1
+  scatterDistance: 2
   dropLibrary: {fileID: 11400000, guid: 937d47e8302e9c54195c1df9149bbc24, type: 2}
-  numberOfDrops: 2
 --- !u!1001 &3951100374628484438
 PrefabInstance:
   m_ObjectHideFlags: 0

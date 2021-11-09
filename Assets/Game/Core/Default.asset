@@ -14,21 +14,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   potentialDrops:
   - item: {fileID: 11400000, guid: 576032d1ce0d6244e986296fdd94b35c, type: 2}
-    relativeChance: []
-    minNumber: 
-    maxNumber: 
+    relativeChance:
+    - 5
+    - 5
+    - 5
+    minNumber: 010000000100000001000000
+    maxNumber: 030000000300000003000000
   - item: {fileID: 11400000, guid: 64a2590c143846f40b847dbd381f7e5c, type: 2}
-    relativeChance: []
-    minNumber: 
-    maxNumber: 
+    relativeChance:
+    - 10
+    - 10
+    - 10
+    minNumber: 010000000100000001000000
+    maxNumber: 030000000300000003000000
   - item: {fileID: 11400000, guid: e60dbb8891b0e4747937a9a60b17287b, type: 2}
-    relativeChance: []
-    minNumber: 
-    maxNumber: 
-  - item: {fileID: 11400000, guid: c5f7d70f49a0a6a46b9517d8c941e1df, type: 2}
-    relativeChance: []
-    minNumber: 
-    maxNumber: 
-  dropChancePercentage: []
-  minDrops: 
-  maxDrops: 
+    relativeChance:
+    - 5
+    - 5
+    - 5
+    minNumber: 010000000100000001000000
+    maxNumber: 030000000300000003000000
+  dropChancePercentage:
+  - 50
+  - 50
+  - 50
+  minDrops: 010000000100000001000000
+  maxDrops: 030000000300000003000000
