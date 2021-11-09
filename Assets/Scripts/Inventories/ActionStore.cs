@@ -158,7 +158,9 @@ namespace RPG.Inventories
         [System.Serializable]
         private struct DockedItemRecord
         {
+#pragma warning disable CA2235 // Mark all non-serializable fields
             public string itemID;
+#pragma warning restore CA2235 // Mark all non-serializable fields
             public int number;
         }
 

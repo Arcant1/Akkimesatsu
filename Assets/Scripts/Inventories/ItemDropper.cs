@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using UnityEngine.SceneManagement;
 
 namespace RPG.Inventories
 {
@@ -12,6 +13,7 @@ namespace RPG.Inventories
     {
         // STATE
         private List<Pickup> droppedItems = new List<Pickup>();
+        private List<DropRecord> otherSceneDroppedItems = new List<DropRecord>();
 
         // PUBLIC
 
@@ -59,29 +61,44 @@ namespace RPG.Inventories
         [System.Serializable]
         private struct DropRecord
         {
+#pragma warning disable CA2235 // Mark all non-serializable fields
             public string itemID;
+#pragma warning restore CA2235 // Mark all non-serializable fields
             public SerializableVector3 position;
             public int number;
+            public int sceneBuildIndex;
         }
 
         object ISaveable.CaptureState()
         {
             RemoveDestroyedDrops();
-            var droppedItemsList = new DropRecord[droppedItems.Count];
-            for (int i = 0; i < droppedItemsList.Length; i++)
+            var droppedItemsList = new List<DropRecord>();
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            foreach (Pickup pickup in droppedItems)
             {
-                droppedItemsList[i].itemID = droppedItems[i].GetItem().GetItemID();
-                droppedItemsList[i].position = new SerializableVector3(droppedItems[i].transform.position);
-                droppedItemsList[i].number = droppedItems[i].GetNumber();
+                var droppedItem = new DropRecord();
+                droppedItem.itemID = pickup.GetItem().GetItemID();
+                droppedItem.position = new SerializableVector3(pickup.transform.position);
+                droppedItem.number = pickup.GetNumber();
+                droppedItem.sceneBuildIndex = sceneIndex;
+                droppedItemsList.Add(droppedItem);
             }
+            droppedItemsList.AddRange(otherSceneDroppedItems);
             return droppedItemsList;
         }
 
         void ISaveable.RestoreState(object state)
         {
-            var droppedItemsList = (DropRecord[])state;
+            var droppedItemsList = (List<DropRecord>)state;
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+            otherSceneDroppedItems.Clear();
             foreach (var item in droppedItemsList)
             {
+                if(item.sceneBuildIndex != sceneIndex)
+                {
+                    otherSceneDroppedItems.Add(item);
+                    continue;
+                }
                 var pickupItem = InventoryItem.GetFromID(item.itemID);
                 Vector3 position = item.position.ToVector();
                 int number = item.number;

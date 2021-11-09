@@ -7,7 +7,7 @@ using RPG.Stats;
 using UnityEngine;
 namespace RPG.Inventories
 {
-    [CreateAssetMenu(menuName = ("RPG/Inventory/Equipable Item"))]
+    [CreateAssetMenu(menuName = ("Akki Messatsu/Items/Stats Equipable Item"))]
     public class StatsEquipableItem : EquipableItem, IModifierProvider
     {
 #pragma warning disable CS0649

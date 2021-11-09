@@ -17,8 +17,10 @@ namespace RPG.Control
         struct CursorMapping
         {
 #pragma warning disable CS0649
+#pragma warning disable CA2235 // Mark all non-serializable fields
             [SerializeField] internal Vector2 hotspot;
             [SerializeField] internal Texture2D texture;
+#pragma warning restore CA2235 // Mark all non-serializable fields
             [SerializeField] internal CursorType cursorType;
 #pragma warning restore CS0649
         }

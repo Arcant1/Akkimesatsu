@@ -22,6 +22,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archer
       objectReference: {fileID: 0}
+    - target: {fileID: 2571142056029278893, guid: 72d8262d25575454082f270ecb8d7a7a,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571142056029278893, guid: 72d8262d25575454082f270ecb8d7a7a,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571142056029278893, guid: 72d8262d25575454082f270ecb8d7a7a,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571142056029278893, guid: 72d8262d25575454082f270ecb8d7a7a,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5751746519827090613}
+    - target: {fileID: 2571142056029278893, guid: 72d8262d25575454082f270ecb8d7a7a,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: RandomDrop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2571142056029278893, guid: 72d8262d25575454082f270ecb8d7a7a,
+        type: 3}
+      propertyPath: onDie.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3689938677423281354, guid: 72d8262d25575454082f270ecb8d7a7a,
         type: 3}
       propertyPath: uniqueIdentifier
@@ -98,6 +128,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 49ab177a4ecbdfa4cbf495538542e9a1,
         type: 2}
+    - target: {fileID: 6874735721473429858, guid: 72d8262d25575454082f270ecb8d7a7a,
+        type: 3}
+      propertyPath: dropLibrary
+      value: 
+      objectReference: {fileID: 11400000, guid: 937d47e8302e9c54195c1df9149bbc24,
+        type: 2}
     - target: {fileID: 8572533084053163339, guid: 72d8262d25575454082f270ecb8d7a7a,
         type: 3}
       propertyPath: m_Height
@@ -114,3 +150,15 @@ PrefabInstance:
     - {fileID: 4798983054873295829, guid: 72d8262d25575454082f270ecb8d7a7a, type: 3}
     - {fileID: 3741634682316433329, guid: 72d8262d25575454082f270ecb8d7a7a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 72d8262d25575454082f270ecb8d7a7a, type: 3}
+--- !u!114 &5751746519827090613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6874735721473429858, guid: 72d8262d25575454082f270ecb8d7a7a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1204072205613194711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58a475dafff080419f095da28aded30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
