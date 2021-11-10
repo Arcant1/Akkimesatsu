@@ -6,6 +6,7 @@ Current features:
   - Stats system
   - Health system
   - Damage system
+  - Item modifiers system
   - Saving system
   - Inventory system
   - Items randomly generated
