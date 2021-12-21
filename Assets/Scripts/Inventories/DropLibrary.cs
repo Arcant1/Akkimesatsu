@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPG.Inventories
@@ -22,7 +20,7 @@ namespace RPG.Inventories
             public float[] relativeChance;
             public int[] minNumber;
             public int[] maxNumber;
-            public int GetRandomNumber(int level)
+            public int GetRandomNumber( int level)
             {
                 if (item.IsStackable())
                     return 1;
@@ -81,7 +79,7 @@ namespace RPG.Inventories
             return total;
         }
 
-        Dropped GetRandomDrop(int level)
+       Dropped GetRandomDrop(int level)
         {
             var drop = SelectRandomItem(level);
             var result = new Dropped();
